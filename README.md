@@ -9,7 +9,7 @@ Run next commands in your terminal:
 | Command        | Description                                                                                 |
 | -------------- | ------------------------------------------------------------------------------------------- |
 | `yarn install` | Install dependencies and launch browser with examples.                                      |
-| `yarn start`   | Launch browser to show the examples. <br> Press `Ctrl + c` to kill **http-server** process. |
+| `yarnyz start`   | Launch browser to show the examples. <br> Press `Ctrl + c` to kill **http-server** process. |
 =======
 
 
