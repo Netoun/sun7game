@@ -1,6 +1,8 @@
 class Game extends Phaser.Scene {
-    constructor() {
-        super("Game")
+    constructor(data) {
+        super({
+            key: 'Game'
+        });
         this.player
         this.platforms
         this.scoreText
@@ -8,11 +10,16 @@ class Game extends Phaser.Scene {
         this.bombs
         this.timeCheck = 0
         this.score = 0
+        this.choicePlayer = ""
+    }
+
+    init(data) {
+        this.choicePlayer = data.choicePlayer
     }
 
     preload() {
         this.load.audio('music', [
-            'assets/music/music.mp3'
+            '../assets/music/music.mp3'
         ]);
         this.load.audio('saut', [
             'assets/audio/saut.mp3'
@@ -29,7 +36,7 @@ class Game extends Phaser.Scene {
         this.load.audio('step', [
             'assets/audio/step.mp3'
         ]);
-        this.load.image('sky', 'assets/sky.png');
+        this.load.image('sky', 'assets/images/sky.png');
         this.load.image('restart', 'assets/images/restart.png');
         this.load.image('ground', 'assets/images/platform.png');
         this.load.image('star', 'assets/images/burger.png');
@@ -54,7 +61,7 @@ class Game extends Phaser.Scene {
 
     create() {
         this.sound.play('music')
-
+        console.log(this.choicePlayer)
         this.add.image(400, 300, 'sky');
 
         this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
@@ -64,20 +71,20 @@ class Game extends Phaser.Scene {
 
         this.anims.create({
             key: 'left',
-            frames: this.anims.generateFrameNumbers(choicePlayer, { start: 0, end: 3 }),
+            frames: this.anims.generateFrameNumbers(this.choicePlayer, { start: 0, end: 3 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'turn',
-            frames: [{ key: choicePlayer, frame: 4 }],
+            frames: [{ key: this.choicePlayer, frame: 4 }],
             frameRate: 20
         });
 
         this.anims.create({
             key: 'right',
-            frames: this.anims.generateFrameNumbers(choicePlayer, { start: 5, end: 8 }),
+            frames: this.anims.generateFrameNumbers(this.choicePlayer, { start: 5, end: 8 }),
             frameRate: 10,
             repeat: -1
         });
@@ -118,7 +125,7 @@ class Game extends Phaser.Scene {
     }
 
     createPlayer() {
-        this.player = this.physics.add.sprite(100, 450, choicePlayer);
+        this.player = this.physics.add.sprite(100, 450, this.choicePlayer);
         this.player.setBounce(0.1);
         this.player.setCollideWorldBounds(true);
         this.player.body.setGravityY(200)
@@ -168,9 +175,9 @@ class Game extends Phaser.Scene {
         const sprite = this.add.sprite(400, 300, 'restart').setInteractive();
         this.sound.play('loose')
         sprite.on('pointerup', (pointer) => {
-            this.scene.restart()
-
-        });
+            console.log(this)
+            this.scene.restart({ choicePlayer: this.choicePlayer })
+        }, this);
 
     }
 

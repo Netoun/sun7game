@@ -1,6 +1,8 @@
 class Choice extends Phaser.Scene {
     constructor() {
-        super("Choice")
+        super({
+            key: 'Choice'
+        });
         this.players
         this.arrays = ["sylvain", "clement", "paul", "Nicolas", "jacques"]
         this.arraysPhrase = ["sylvainphrase", "clementphrase", "paul", "Nicolas", "jacques"]
@@ -9,15 +11,15 @@ class Choice extends Phaser.Scene {
 
     preload() {
         this.load.audio('sylvainphrase', [
-            'assets/sylvainphrase.mp3'
+            'assets/audio/sylvainphrase.mp3'
         ]);
         this.load.audio('clementphrase', [
-            'assets/clementphrase.mp3'
+            'assets/audio/clementphrase.mp3'
         ]);
-        this.load.image('sylvain', 'assets/Sylvain.png')
-        this.load.image('jacques', 'assets/jacques.png')
-        this.load.image('clement', 'assets/Clement.png')
-        this.load.image('paul', 'assets/Paul.png')
+        this.load.image('sylvain', 'assets/images/Sylvain.png')
+        this.load.image('jacques', 'assets/images/jacques.png')
+        this.load.image('clement', 'assets/images/Clement.png')
+        this.load.image('paul', 'assets/images/Paul.png')
     }
 
     create() {
@@ -31,13 +33,14 @@ class Choice extends Phaser.Scene {
 
         this.input.on('gameobjectup', (pointer, gameObject) => {
             gameObject.emit('clicked', gameObject, this);
-            this.scene.start("Game")
+            this.scene.start("Game", { choicePlayer: this.choicePlayer })
         }, this);
     }
 
     clickHandler(box) {
+        this.scene.remove('game')
         this.sound.play(this.arraysPhrase[box.name])
-        choicePlayer = this.arraysDraw[box.name]
+        this.choicePlayer = this.arraysDraw[box.name]
     }
 }
 

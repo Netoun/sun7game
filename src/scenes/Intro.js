@@ -1,16 +1,16 @@
 class Intro extends Phaser.Scene {
     constructor(test) {
-        super(
-            'Intro'
-        );
+        super({
+            key: 'Intro'
+        });
         this.logogroup
         this.logotween
         this.tweenintro
         this.textintro
     }
     preload() {
-        this.load.image('logo', 'assets/sunset.png')
-        this.load.image('skip', 'assets/skip.png');
+        this.load.image('logo', 'assets/images/sunset.png')
+        this.load.image('skip', 'assets/images/skip.png');
     }
 
     create() {
@@ -27,7 +27,7 @@ class Intro extends Phaser.Scene {
 
         const sprite = this.add.sprite(400, 550, 'skip').setInteractive();
 
-        this.textintro = this.add.text(100, 280, 'Sun7 Production', { font: "70px peace_sans", fill: '#FFF' });
+        this.textintro = this.add.text(100, 280, 'Sun7 Production', { font: "70px peace_sans", fill: '#fff' });
         this.textintro.alpha = 0
 
         this.tweenintro = this.tweens.add({

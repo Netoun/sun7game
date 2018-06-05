@@ -2086,7 +2086,7 @@ eventemitter3@1.x.x:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-1.2.0.tgz#1c86991d816ad1e504750e73874224ecf3bec508"
 
-eventemitter3@^3.0.1:
+eventemitter3@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.0.tgz#090b4d6cdbd645ed10bf750d4b5407942d7ba163"
 
@@ -3987,11 +3987,11 @@ phaser-animated-tiles@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/phaser-animated-tiles/-/phaser-animated-tiles-2.0.2.tgz#541f9ec3790de92ba11c662049a7234d6dde2f53"
 
-phaser@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/phaser/-/phaser-3.3.0.tgz#9b9132fb973f280cce38c842db173569c6c05af1"
+phaser@^3.3.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/phaser/-/phaser-3.9.0.tgz#0ac6465031b0a14a4af4320faf95f39f671599d7"
   dependencies:
-    eventemitter3 "^3.0.1"
+    eventemitter3 "^3.1.0"
 
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
