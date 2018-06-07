@@ -11,10 +11,12 @@ class Game extends Phaser.Scene {
         this.timeCheck = 0
         this.score = 0
         this.choicePlayer = ""
+        this.pseudoPlayer = ""
     }
 
     init(data) {
         this.choicePlayer = data.choicePlayer
+        this.pseudoPlayer = data.pseudoPlayer
     }
 
     preload() {
@@ -175,8 +177,18 @@ class Game extends Phaser.Scene {
         const sprite = this.add.sprite(400, 300, 'restart').setInteractive();
         this.sound.play('loose')
         sprite.on('pointerup', (pointer) => {
-            console.log(this)
-            this.scene.restart({ choicePlayer: this.choicePlayer })
+            (async () => {
+                const rawResponse = await fetch('https://sun7game-api.herokuapp.com/', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name: this.pseudoPlayer, score: this.score })
+                });
+                const content = await rawResponse.json();
+            })();
+            this.scene.restart({ choicePlayer: this.choicePlayer, pseudoPlayer: this.pseudoPlayer })
         }, this);
 
     }

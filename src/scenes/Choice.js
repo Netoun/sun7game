@@ -7,6 +7,7 @@ class Choice extends Phaser.Scene {
         this.arrays = ["sylvain", "clement", "paul", "Nicolas", "jacques"]
         this.arraysPhrase = ["sylvainphrase", "clementphrase", "paul", "Nicolas", "jacques"]
         this.arraysDraw = ["drawSylvain", "drawClement", "drawPaul", "drawNicolas", "drawJacques"]
+        this.pseudoPlayer = ""
     }
 
     preload() {
@@ -23,6 +24,8 @@ class Choice extends Phaser.Scene {
     }
 
     create() {
+
+        this.pseudoPlayer = prompt("Please enter your name", " ");
         this.players = this.add.group()
         this.arrays.forEach((element, i) => {
             var spritePlayers = this.add.sprite((i + 1) * 132, 300, element).setInteractive();
@@ -33,7 +36,7 @@ class Choice extends Phaser.Scene {
 
         this.input.on('gameobjectup', (pointer, gameObject) => {
             gameObject.emit('clicked', gameObject, this);
-            this.scene.start("Game", { choicePlayer: this.choicePlayer })
+            this.scene.start("Game", { choicePlayer: this.choicePlayer, pseudoPlayer: this.pseudoPlayer })
         }, this);
     }
 
