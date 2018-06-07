@@ -178,7 +178,7 @@ class Game extends Phaser.Scene {
         this.sound.play('loose')
         sprite.on('pointerup', (pointer) => {
             (async () => {
-                const rawResponse = await fetch('https://sun7game-api.herokuapp.com/', {
+                const rawResponse = await fetch('https://sun7game-api.herokuapp.com/score', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
