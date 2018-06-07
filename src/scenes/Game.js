@@ -184,7 +184,7 @@ class Game extends Phaser.Scene {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ name: this.pseudoPlayer, score: this.score })
+                    body: JSON.stringify({ name: this.pseudoPlayer, point: this.score })
                 });
                 const content = await rawResponse.json();
             })();
