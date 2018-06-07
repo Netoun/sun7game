@@ -172,7 +172,7 @@ class Game extends Phaser.Scene {
         this.player.setTint(0xff0000);
 
         this.player.anims.play('turn');
-        this.score = 0
+
 
         const sprite = this.add.sprite(400, 300, 'restart').setInteractive();
         this.sound.play('loose')
@@ -188,6 +188,7 @@ class Game extends Phaser.Scene {
                 });
                 const content = await rawResponse.json();
             })();
+            this.score = 0
             this.scene.restart({ choicePlayer: this.choicePlayer, pseudoPlayer: this.pseudoPlayer })
         }, this);
 
