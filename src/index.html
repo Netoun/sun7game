@@ -16,6 +16,8 @@
 
         .content {
             margin-top: 80px;
+            margin-right: 20px;
+            float: right
         }
 
         @font-face {
@@ -25,11 +27,41 @@
             color: white;
             src: url(assets/fonts/BlackHanSans-Regular.ttf);
         }
+
+        .array {
+            float: left
+        }
+
+        .table {
+            width: 300px;
+            margin-left: 25%;
+            margin-top: 20%;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border: 1px solid white;
+        }
+
+        th,
+        td {
+            font-family: "peace_sans";
+            border: 1px solid white;
+            padding: 5px;
+            padding-left: 10px;
+            font-size: 1.5em;
+            padding-right: 10px;
+        }
     </style>
 </head>
 
 <body>
-
-    <div class="content" id="content" style="display: block; width: 100%; text-align: center"></div>
-
+    <div class="main">
+        <div class="array">
+            <table class="table" id="myTable">
+            </table>
+        </div>
+        <div class="content" id="content"></div>
+    </div>
 </body>
