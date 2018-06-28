@@ -42,7 +42,12 @@ class Choice extends Phaser.Scene {
 
     clickHandler(box) {
         this.scene.remove('game')
-        this.sound.play(this.arraysPhrase[box.name])
+        try {
+            this.sound.play(this.arraysPhrase[box.name])
+        }
+        catch (e) {
+
+        }
         this.choicePlayer = this.arraysDraw[box.name]
     }
 }
