@@ -1,3 +1,5 @@
+import getScore from '../main';
+
 class Game extends Phaser.Scene {
     constructor(data) {
         super({
@@ -175,19 +177,20 @@ class Game extends Phaser.Scene {
 
 
         const sprite = this.add.sprite(400, 300, 'restart').setInteractive();
-        this.sound.play('loose')
-            (async () => {
-                const rawResponse = await fetch('https://sun7game-api.herokuapp.com/score', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ name: this.pseudoPlayer, point: this.score })
-                });
-                const content = await rawResponse.json();
-            })();
+        this.sound.play('loose');
+        (async () => {
+            const rawResponse = await fetch('https://sun7game-api.herokuapp.com/score', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: this.pseudoPlayer, point: this.score })
+            });
+            const content = await rawResponse.json();
+        })();
         sprite.on('pointerup', (pointer) => {
+            getScore()
             this.score = 0
             this.scene.restart({ choicePlayer: this.choicePlayer, pseudoPlayer: this.pseudoPlayer })
         }, this);

@@ -24,14 +24,14 @@ module.exports = {
     },
     devtool: 'cheap-source-map',
     output: {
-      pathinfo: true,
+        pathinfo: true,
         path: path.resolve(__dirname, 'dev'),
         publicPath: './dev/',
         library: '[name]',
         libraryTarget: 'umd',
         filename: '[name].js'
     },
-    watch: true, 
+    watch: true,
     plugins: [
         definePlugin,
         //new webpack.optimize.CommonsChunkPlugin({ name: 'vendor'/* chunkName= */, filename: 'vendor.bundle.js'/* filename= */ }),
@@ -53,8 +53,8 @@ module.exports = {
             hash: false
         }),
         new BrowserSyncPlugin({
-            host: process.env.IP || 'localhost',
-            port: process.env.PORT || 3000,
+            host: process.env.IP || '0.0.0.0',
+            port: process.env.PORT || 3456,
             server: {
                 baseDir: ['./', './dev']
             }
@@ -67,14 +67,14 @@ module.exports = {
             { test: [/\.vert$/, /\.frag$/], use: 'raw-loader' }
         ]
     },
-   /* node: {
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty'
-    },
-    resolve: {
-        alias: {
-            'phaser': phaser,
-        }
-    }*/
+    /* node: {
+         fs: 'empty',
+         net: 'empty',
+         tls: 'empty'
+     },
+     resolve: {
+         alias: {
+             'phaser': phaser,
+         }
+     }*/
 }

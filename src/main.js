@@ -20,7 +20,7 @@ const config = {
     scene: [Intro, Choice, Game]
 };
 
-$(document).ready(function () {
+export default function getScore() {
     (async () => {
         const rawResponse = await fetch('https://sun7game-api.herokuapp.com/score', {
             method: 'GET',
@@ -59,6 +59,10 @@ $(document).ready(function () {
             score.innerHTML = element.point
         });
     })();
+}
+
+$(document).ready(function () {
+    getScore()
 });
 
 const game = new Phaser.Game(config);
