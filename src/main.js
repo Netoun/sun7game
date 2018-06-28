@@ -21,6 +21,8 @@ const config = {
 };
 
 export default function getScore() {
+    document.getElementById("myTable").innerHTML = "";
+
     (async () => {
         const rawResponse = await fetch('https://sun7game-api.herokuapp.com/score', {
             method: 'GET',
