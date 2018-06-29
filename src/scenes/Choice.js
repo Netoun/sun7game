@@ -25,7 +25,11 @@ class Choice extends Phaser.Scene {
 
     create() {
 
-        this.pseudoPlayer = prompt("Please enter your name", " ");
+        const name = prompt("Please enter your name", " ");
+        if (name.length > 20 || name.match(/[|\\/~^:,;?<>!&%$@*+]/)) {
+            this.scene.restart()
+        }
+        this.pseudoPlayer = name
         this.players = this.add.group()
         this.arrays.forEach((element, i) => {
             var spritePlayers = this.add.sprite((i + 1) * 132, 300, element).setInteractive();
