@@ -26,7 +26,7 @@ class Choice extends Phaser.Scene {
     create() {
 
         const name = prompt("Please enter your name", " ");
-        if (name.length > 20 || name.match(/[|\\/~^:,;?<>!&%$@*+]/)) {
+        if (name.length > 20 || name.match(/[|\\/~^:,;?<>!&-_%$@*+]/)) {
             this.scene.restart()
         }
         this.pseudoPlayer = name
