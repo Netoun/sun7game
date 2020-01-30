@@ -1,6 +1,6 @@
 ## sun7game
 
-A game of burger
+A game of burger.
 
 ## Install and run
 
